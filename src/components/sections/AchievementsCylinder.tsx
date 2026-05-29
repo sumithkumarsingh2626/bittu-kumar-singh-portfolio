@@ -21,6 +21,7 @@ export default function AchievementsCylinder() {
 
   useEffect(() => {
     // Rotate the cylinder infinitely based on scroll
+    gsap.registerPlugin(ScrollTrigger);
     gsap.to(cylinderRef.current, {
       rotateX: -360,
       ease: "none",

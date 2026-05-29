@@ -8,6 +8,8 @@
   --text-muted: rgba(255, 255, 255, 0.45);
   --accent: #7FA4D6;
   --highlight: #A7C7FF;
+  --font-sans-stack: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif-stack: "Instrument Serif", Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 @theme inline {
@@ -18,14 +20,14 @@
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
   --color-highlight: var(--highlight);
-  --font-serif: var(--font-instrument-serif), serif;
-  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-serif-stack);
+  --font-sans: var(--font-sans-stack);
 }
 
 body {
   background: var(--background);
   color: var(--text-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-sans-stack);
   overflow-x: hidden;
   user-select: none;
   -webkit-user-select: none;

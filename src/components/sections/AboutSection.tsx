@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { createParticleField } from "@/lib/createParticleField";
 
 const quote = "I solve problems before they become problems.";
 
@@ -10,9 +11,11 @@ export default function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLDivElement>(null);
+  const particles = createParticleField(20, 20);
 
   useEffect(() => {
     if (!textRef.current || !subRef.current) return;
+    gsap.registerPlugin(ScrollTrigger);
 
     const words = textRef.current.querySelectorAll('.word');
     
@@ -43,17 +46,17 @@ export default function AboutSection() {
       
       {/* Particle Background (CSS simulated for performance) */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle) => (
           <div 
-            key={i}
+            key={particle.id}
             className="absolute rounded-full bg-white animate-pulse"
             style={{
-              width: Math.random() * 4 + 'px',
-              height: Math.random() * 4 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDuration: (Math.random() * 3 + 2) + 's',
-              animationDelay: (Math.random() * 2) + 's',
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              top: `${particle.top}%`,
+              left: `${particle.left}%`,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
             }}
           />
         ))}

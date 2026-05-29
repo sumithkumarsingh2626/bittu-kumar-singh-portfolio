@@ -15,14 +15,10 @@ export default function CustomCursor() {
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
-  const dotSpringConfig = { damping: 40, stiffness: 600, mass: 0.1 };
-  const dotSmoothX = useSpring(cursorX, dotSpringConfig);
-  const dotSmoothY = useSpring(cursorY, dotSpringConfig);
-
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const mountId = requestAnimationFrame(() => setMounted(true));
     document.body.style.cursor = "none";
     
     const moveCursor = (e: MouseEvent) => {
@@ -57,6 +53,7 @@ export default function CustomCursor() {
     window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
+      cancelAnimationFrame(mountId);
       document.body.style.cursor = "auto";
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);

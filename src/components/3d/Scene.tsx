@@ -28,7 +28,7 @@ export default function Scene() {
         <HeroText />
         
         {/* Post-Processing Effects */}
-        <EffectComposer disableNormalPass multisampling={4}>
+        <EffectComposer enableNormalPass={false} multisampling={4}>
           <Bloom
             luminanceThreshold={0.5}
             mipmapBlur

@@ -24,6 +24,7 @@ export default function HeroSection() {
   const lastPos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",

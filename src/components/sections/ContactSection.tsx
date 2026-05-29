@@ -4,10 +4,12 @@
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Mail, Link as LinkIcon, Phone } from "lucide-react";
+import { createParticleField } from "@/lib/createParticleField";
 
 export default function ContactSection() {
   // Ref for star field container to apply subtle cursor‑parallax
   const starsRef = useRef<HTMLDivElement>(null);
+  const stars = createParticleField(80, 80);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -25,18 +27,18 @@ export default function ContactSection() {
     <section id="contact" className="relative min-h-screen bg-[#050505] flex flex-col items-center justify-center overflow-hidden pt-32 pb-20">
       {/* Animated Star Field Background */}
       <div ref={starsRef} className="absolute inset-0 pointer-events-none">
-        {[...Array(80)].map((_, i) => (
+        {stars.map((star) => (
           <div
-            key={i}
+            key={star.id}
             className="absolute rounded-full bg-white animate-pulse"
             style={{
-              width: Math.random() * 1.5 + 1 + "px",
-              height: Math.random() * 1.5 + 1 + "px",
-              top: Math.random() * 100 + "%",
-              left: Math.random() * 100 + "%",
-              animationDuration: Math.random() * 4 + 3 + "s",
-              animationDelay: Math.random() * 5 + "s",
-              opacity: Math.random() * 0.4 + 0.1,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              top: `${star.top}%`,
+              left: `${star.left}%`,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
+              opacity: star.opacity,
             }}
           />
         ))}
@@ -53,7 +55,7 @@ export default function ContactSection() {
               transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
               className="text-4xl md:text-6xl lg:text-8xl font-serif italic text-white/80 leading-tight"
             >
-              "The strongest systems
+              &quot;The strongest systems
             </motion.h2>
           </div>
           <div className="overflow-hidden pb-4">
@@ -64,7 +66,7 @@ export default function ContactSection() {
               transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
               className="text-4xl md:text-6xl lg:text-8xl font-serif italic text-white/80 leading-tight"
             >
-              are built around people."
+              are built around people.&quot;
             </motion.h2>
           </div>
         </div>
@@ -77,7 +79,7 @@ export default function ContactSection() {
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold font-sans tracking-tight text-white uppercase"
           >
-            Let's build something together
+            Let&apos;s build something together
           </motion.h3>
         </div>
 

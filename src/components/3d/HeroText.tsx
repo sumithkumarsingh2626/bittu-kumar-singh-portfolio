@@ -18,6 +18,7 @@ export default function HeroText() {
   const animProxy = useRef({ progress: 0 });
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     // We assume the HeroSection is pinning a container with height 300vh.
     // The window scroll over the first 200vh will drive this progress.
     ScrollTrigger.create({
@@ -108,7 +109,7 @@ export default function HeroText() {
             lineHeight={0.8}
             position={[0, 0, 0]} // Initial stacked position
           >
-            {`hey welcome\nto my profile`}
+            {`hey welcome\nThis is Bittu`}
             <meshStandardMaterial {...materialProps} />
           </Text3D>
         ))}

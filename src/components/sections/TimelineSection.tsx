@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { createParticleField } from "@/lib/createParticleField";
 
 const nodes = [
   { year: "2020", title: "Education" },
@@ -17,24 +18,10 @@ export default function TimelineSection() {
   const lineRef = useRef<HTMLDivElement>(null);
   const nodesRef = useRef<(HTMLDivElement | null)[]>([]);
   const starsRef = useRef<HTMLDivElement>(null);
-  const stars = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < 120; i++) {
-      const size = Math.random() * 2 + 1;
-      arr.push({
-        id: i,
-        size,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        duration: Math.random() * 5 + 3,
-        delay: Math.random() * 5,
-        opacity: Math.random() * 0.5 + 0.2,
-      });
-    }
-    return arr;
-  }, []);
+  const stars = createParticleField(120, 200);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,

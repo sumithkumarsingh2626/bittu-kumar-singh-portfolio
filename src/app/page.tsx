@@ -19,23 +19,21 @@ export default function Home() {
 
   return (
     <main className="relative bg-[#050505] text-white">
+      <>
+        <Navigation />
+        <HeroSection />
+        <AboutSection />
+        <TimelineSection />
+        <ExperienceSection />
+        <CyberSecuritySection />
+        <SkillsGalaxy />
+        <AchievementsCylinder />
+        <ImpactSection />
+        <ContactSection />
+        <Marquee />
+      </>
+
       {loading && <IntroLoader onComplete={() => setLoading(false)} />}
-      
-      {!loading && (
-        <>
-          <Navigation />
-          <HeroSection />
-          <AboutSection />
-          <TimelineSection />
-          <ExperienceSection />
-          <CyberSecuritySection />
-          <SkillsGalaxy />
-          <AchievementsCylinder />
-          <ImpactSection />
-          <ContactSection />
-          <Marquee />
-        </>
-      )}
     </main>
   );
 }

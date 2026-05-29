@@ -1,27 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { createParticleField } from "@/lib/createParticleField";
 
 export default function ExperienceSection() {
   const [hovered, setHovered] = useState(false);
   const starsRef = useRef<HTMLDivElement>(null);
-  const stars = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < 120; i++) {
-      const size = Math.random() * 2 + 1;
-      arr.push({
-        id: i,
-        size,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        duration: Math.random() * 5 + 3,
-        delay: Math.random() * 5,
-        opacity: Math.random() * 0.5 + 0.2,
-      });
-    }
-    return arr;
-  }, []);
+  const stars = createParticleField(120, 140);
 
   // Mouse parallax for star field
   useEffect(() => {

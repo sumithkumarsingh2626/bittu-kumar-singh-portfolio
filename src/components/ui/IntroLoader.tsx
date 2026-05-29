@@ -26,7 +26,9 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
 
   const [progress, setProgress] = useState(0);
   const onCompleteRef = useRef(onComplete);
-  onCompleteRef.current = onComplete;
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   // ── Letter Decode Effect ──
   const startLetterDecode = useCallback(() => {
@@ -154,17 +156,20 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
       }, 4.0);
 
       // Doors open — fire onComplete NOW so hero mounts behind doors
+      tl.to(topDoorRef.current, {
+        y: "-100%",
+        duration: 1.0,
+        ease: "power4.inOut",
+      }, 4.2);
+      tl.to(bottomDoorRef.current, {
+        y: "100%",
+        duration: 1.0,
+        ease: "power4.inOut",
+      }, 4.2);
       tl.call(() => {
         document.body.style.overflow = "auto";
         onCompleteRef.current();
-      }, [], 4.2);
-
-      tl.to(topDoorRef.current, {
-        y: "-100%", duration: 1.0, ease: "power4.inOut",
-      }, 4.2);
-      tl.to(bottomDoorRef.current, {
-        y: "100%", duration: 1.0, ease: "power4.inOut",
-      }, 4.2);
+      }, [], 5.2);
 
     }, containerRef);
 
@@ -244,15 +249,23 @@ export default function IntroLoader({ onComplete }: { onComplete: () => void }) 
       {/* ── TOP DOOR ── */}
       <div
         ref={topDoorRef}
-        className="absolute top-0 left-0 w-full h-1/2 bg-[#050505] z-[105]"
-        style={{ borderBottom: "1px solid rgba(30,167,224,0.2)" }}
+        className="absolute top-0 left-0 h-1/2 w-full bg-[#050505] z-[105]"
+        style={{
+          borderBottom: "1px solid rgba(30,167,224,0.2)",
+          boxShadow: "inset 0 -24px 40px rgba(0,0,0,0.45)",
+          willChange: "transform",
+        }}
       />
 
       {/* ── BOTTOM DOOR ── */}
       <div
         ref={bottomDoorRef}
-        className="absolute bottom-0 left-0 w-full h-1/2 bg-[#050505] z-[105]"
-        style={{ borderTop: "1px solid rgba(30,167,224,0.2)" }}
+        className="absolute bottom-0 left-0 h-1/2 w-full bg-[#050505] z-[105]"
+        style={{
+          borderTop: "1px solid rgba(30,167,224,0.2)",
+          boxShadow: "inset 0 24px 40px rgba(0,0,0,0.45)",
+          willChange: "transform",
+        }}
       />
 
       {/* ── ALL UI CONTENT (above doors) ── */}

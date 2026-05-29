@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createParticleField } from "@/lib/createParticleField";
 
 const skills = [
   { name: "Microsoft Excel", type: "tech", x: 10, y: 20, size: 100 },
@@ -19,24 +20,7 @@ const skills = [
 export default function SkillsGalaxy() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const starsRef = useRef<HTMLDivElement>(null);
-
-  // generate star field data once
-  const stars = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < 120; i++) {
-      const size = Math.random() * 2 + 1; // 1-3px
-      arr.push({
-        id: i,
-        size,
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        duration: Math.random() * 5 + 3,
-        delay: Math.random() * 5,
-        opacity: Math.random() * 0.5 + 0.2,
-      });
-    }
-    return arr;
-  }, []);
+  const stars = createParticleField(120, 180);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {

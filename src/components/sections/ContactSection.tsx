@@ -91,7 +91,7 @@ export default function ContactSection() {
             icon={<LinkIcon className="w-8 h-8" />}
             label="LinkedIn"
             value="linkedin.com/in/bittu-kumar-singh534328377"
-            href="https://www.linkedin.com/in/bittu-kumar-singh534328377"
+            href="https://www.linkedin.com/in/bittu-kumar-singh-534328377"
           />
           <MagneticContactCard
             icon={<Phone className="w-8 h-8" />}

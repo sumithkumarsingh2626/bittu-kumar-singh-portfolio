@@ -1,14 +1,16 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, type ReactNode, type MouseEvent as ReactMouseEvent } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const links = [
   { name: "About", href: "#about" },
-  { name: "Journey", href: "#journey" },
-  { name: "Experience", href: "#experience" },
+  { name: "Education", href: "#education" },
+  { name: "Projects", href: "#projects" },
+  { name: "Certifications", href: "#certifications" },
   { name: "Skills", href: "#skills" },
+  { name: "Focus", href: "#links" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -62,11 +64,11 @@ export default function Navigation() {
   );
 }
 
-function MagneticButton({ children }: { children: React.ReactNode }) {
+function MagneticButton({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouse = (e: React.MouseEvent) => {
+  const handleMouse = (e: ReactMouseEvent) => {
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current!.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);

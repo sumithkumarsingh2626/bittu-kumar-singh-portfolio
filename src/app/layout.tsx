@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 import CustomCursor from "@/components/ui/CustomCursor";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Bittu Kumar Singh",
-  description: "I solve problems before they become problems. A cinematic journey of a Computer Science Graduate and Cyber Security Enthusiast.",
+  description:
+    "Portfolio of Bittu Kumar Singh, a Computer Science graduate focused on MERN stack development, AWS learning, Java, and building practical web apps.",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" className="antialiased dark">

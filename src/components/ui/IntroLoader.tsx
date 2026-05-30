@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 
 const FULL_NAME = "BITTU KUMAR SINGH";
-const SUBTITLE = "PORTFOLIO · MMXXV";
+const SUBTITLE = "MERN STACK PORTFOLIO";
 const TOTAL_DURATION = 5200;
 
 export default function IntroLoader({ onComplete }: { onComplete: () => void }) {

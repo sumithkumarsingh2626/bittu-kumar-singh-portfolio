@@ -98,7 +98,7 @@ export default function HeroSection() {
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center opacity-70 pointer-events-none">
         <p className="text-xs md:text-sm font-mono tracking-widest uppercase mb-4 text-white text-center">
-          Scroll down to see about me
+          Scroll down to explore the resume
         </p>
         <motion.div
           animate={{ y: [0, 10, 0] }}

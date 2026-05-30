@@ -109,7 +109,7 @@ export default function HeroText() {
             lineHeight={0.8}
             position={[0, 0, 0]} // Initial stacked position
           >
-            {`hey welcome\nThis is Bittu`}
+            {`Bittu Kumar Singh\nMERN Stack Developer`}
             <meshStandardMaterial {...materialProps} />
           </Text3D>
         ))}
